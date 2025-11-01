@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Medical Store</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen dark:bg-gray-900">
+
+  <div class="absolute top-4 right-4">
+    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+       <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+       <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414 0l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM3 11a1 1 0 100 2H2a1 1 0 100-2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+     </button>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md dark:bg-gray-800">
+    <h1 class="text-2xl font-bold text-center text-blue-600 mb-6 dark:text-blue-400">Login to MediStore</h1>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+        <input type="email" id="email" class="w-full mt-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="you@example.com" required />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+        <input type="password" id="password" class="w-full mt-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="••••••••" required />
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition dark:bg-blue-500 dark:hover:bg-blue-600">Login</button>
+    </form>
+    
+    <p id="message" class="mt-4 text-center text-sm font-medium"></p>
+
+    <div class="mt-2 text-sm text-center text-gray-600 dark:text-gray-400">
+        <a href="#" id="forgot-password-link" class="hover:underline text-blue-600 dark:text-blue-400">Forgot Password?</a>
+    </div>
+
+    <p class="mt-4 text-sm text-center text-gray-600 dark:text-gray-400">
+      Don't have an account?
+      <a href="signup.html" class="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">Sign up here</a>
+    </p>
+
+    <p class="mt-4 text-xs text-center text-gray-400">© 2025 MediStore. All rights reserved.</p>
+  </div>
+
+  <script type="module">
+    import { auth } from "./js/firebase.js";
+    import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const form = document.getElementById("loginForm");
+    const messageElement = document.getElementById("message");
+    const forgotPasswordLink = document.getElementById("forgot-password-link");
+
+    // --- Login Handler ---
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        messageElement.textContent = "Login successful! Redirecting...";
+        messageElement.className = "mt-4 text-center text-sm font-medium text-green-600";
+        
+        setTimeout(() => {
+          // **UPDATED LOGIC HERE**
+          // Check for a redirect URL stored in localStorage (from the cart page)
+          const redirectUrl = localStorage.getItem('redirectAfterLogin');
+          if (redirectUrl) {
+            localStorage.removeItem('redirectAfterLogin'); // Clean up after using it
+            window.location.href = redirectUrl; // Go to the stored URL (e.g., checkout.html)
+          } else {
+            // If no redirect is stored, go to the homepage as default
+            window.location.href = "index.html";
+          }
+        }, 1500);
+
+      } catch (error) {
+        console.error("Login failed:", error.message);
+        messageElement.textContent = "Login failed: Invalid credentials.";
+        messageElement.className = "mt-4 text-center text-sm font-medium text-red-600";
+      }
+    });
+
+    // --- Forgot Password Handler ---
+    forgotPasswordLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+
+        if (!email) {
+            messageElement.textContent = "Please enter your email above to reset password.";
+            messageElement.className = "mt-4 text-center text-sm font-medium text-red-600";
+            return;
+        }
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            messageElement.textContent = "Password reset email sent! Please check your inbox (and spam folder).";
+            messageElement.className = "mt-4 text-center text-sm font-medium text-green-600";
+        } catch (error) {
+            console.error("Password reset error:", error.message);
+            let errorMessage = "Could not send reset email. Please try again.";
+            if (error.code === 'auth/user-not-found') {
+                errorMessage = "No account found with that email address.";
+            }
+            messageElement.textContent = errorMessage;
+            messageElement.className = "mt-4 text-center text-sm font-medium text-red-600";
+        }
+    });
+  </script>
+  
+  <script src="./js/theme.js"></script>
+  <script type="module" src="js/auth-check.js"></script>
+</body>
+</html>

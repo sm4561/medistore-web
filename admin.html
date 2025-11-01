@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | MediStore</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+  <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400">Admin Dashboard</h1>
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="text-sm text-blue-500 hover:underline dark:text-blue-400 dark:hover:text-blue-300">← Back to Store</a>
+        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+           <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414 0l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM3 11a1 1 0 100 2H2a1 1 0 100-2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+         </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Manage Products</h2>
+      <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">+ Add Product</button>
+    </div>
+
+    <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded shadow">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+          <tr>
+            <th class="py-3 px-4 text-left">Image</th>
+            <th class="py-3 px-4 text-left">Name</th>
+            <th class="py-3 px-4 text-left">Category</th>
+            <th class="py-3 px-4 text-left">Price</th>
+            <th class="py-3 px-4 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTableBody" class="divide-y divide-gray-200 dark:divide-gray-700">
+          </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow w-full max-w-md">
+      <h3 class="text-lg font-semibold mb-4">Add Product</h3>
+      <form id="addProductForm" class="space-y-4">
+        <input type="text" id="addProductName" placeholder="Product Name" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="text" id="addProductCategory" placeholder="Category" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="number" id="addProductPrice" placeholder="Price (₹)" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="text" id="addProductImage" placeholder="Image URL" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <div class="flex justify-end space-x-2">
+          <button type="button" onclick="closeAddModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow w-full max-w-md">
+      <h3 class="text-lg font-semibold mb-4">Edit Product</h3>
+      <form id="editProductForm" class="space-y-4">
+        <input type="hidden" id="editProductId" />
+        <input type="text" id="editProductName" placeholder="Product Name" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="text" id="editProductCategory" placeholder="Category" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="number" id="editProductPrice" placeholder="Price (₹)" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input type="text" id="editProductImage" placeholder="Image URL" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:dark:border-gray-600 dark:text-white" required />
+        <div class="flex justify-end space-x-2">
+          <button type="button" onclick="closeEditModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-white dark:bg-gray-800 mt-10 py-6 shadow-inner text-center text-sm text-gray-500 dark:text-gray-400">
+    © 2025 MediStore Admin Panel
+  </footer>
+
+  <script type="module" src="js/admin.js"></script>
+  <script src="./js/theme.js"></script>
+</body>
+</html>
+

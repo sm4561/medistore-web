@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service | MediStore</title>
+  
+  <!-- Main Tailwind CSS script -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Dark Mode Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="index.html" class="text-xl font-bold text-blue-600 dark:text-blue-400">🩺 MediStore</a>
+    <div class="flex items-center space-x-6">
+      
+      <!-- MODIFIED: Added flex and items-center to the nav tag for perfect alignment -->
+      <nav class="space-x-6 text-sm flex items-center">
+        <a href="index.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">Home</a>
+        <a href="products.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">Products</a>
+        <a href="cart.html" class="relative hover:text-blue-500 dark:text-white dark:hover:text-blue-400">
+          🛒 Cart
+          <span id="cartCount" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 rounded-full hidden">0</span>
+        </a>
+        <a href="about.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">About</a>
+        <a href="contact.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">Contact</a>
+        
+        <!-- This is the dynamic profile link block -->
+        <a id="auth-link" href="login.html" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+          <div id="nav-initials-container" class="w-8 h-8 rounded-full hidden items-center justify-center text-white font-bold text-sm">
+              <!-- JS will add initials here -->
+          </div>
+          <span id="nav-profile-text">Login</span>
+        </a>
+      </nav>
+
+      <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414 0l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM3 11a1 1 0 100 2H2a1 1 0 100-2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+       </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <main class="py-12 px-4">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md dark:bg-gray-800">
+      <h1 class="text-3xl font-bold text-blue-700 dark:text-blue-400 mb-6 border-b pb-4 dark:border-gray-700">Terms of Service</h1>
+      
+      <div class="space-y-6 text-gray-700 dark:text-gray-300">
+        <p><strong>Last Updated:</strong> September 6, 2025</p>
+
+        <p>Please read these Terms of Service ("Terms") carefully before using the MediStore website (the "Service"). Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms.</p>
+
+        <section>
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100">1. Accounts</h2>
+          <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100">2. Orders and Products</h2>
+          <p>We reserve the right to refuse or cancel your order at any time for certain reasons including but not limited to: product or service availability, errors in the description or price of the product or service, error in your order, or other reasons. We are not responsible for any health issues that may arise from the use of products sold on our site. Please consult a medical professional before using any new medication.</p>
+        </section>
+        
+        <section>
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100">3. Limitation Of Liability</h2>
+          <p>In no event shall MediStore, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
+        </section>
+        
+        <section>
+          <h2 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100">4. Governing Law</h2>
+          <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 dark:bg-black">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <p>&copy; 2025 MediStore. All rights reserved.</p>
+      <div class="flex space-x-4 my-4 md:my-0">
+        <a href="privacy-policy.html" class="hover:underline">Privacy Policy</a>
+        <a href="terms-of-service.html" class="hover:underline">Terms of Service</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FIX: Corrected script links at the bottom -->
+  <script src="./js/theme.js"></script>
+  <script type="module" src="js/auth-check.js"></script>
+</body>
+</html>

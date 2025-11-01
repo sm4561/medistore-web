@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | MediStore</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+  <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-blue-600 dark:text-blue-400">🩺 MediStore</a>
+      <div class="flex items-center space-x-6">
+        <nav class="space-x-6 text-sm flex items-center">
+          <a href="index.html" class="hover:text-blue-500 dark:hover:text-blue-400">Home</a>
+          <a href="products.html" class="hover:text-blue-500 dark:hover:text-blue-400">Products</a>
+          <a href="cart.html" class="relative hover:text-blue-500 dark:text-white dark:hover:text-blue-400">
+            🛒 Cart
+            <span id="cartCount" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-2 rounded-full hidden">0</span>
+          </a>
+          <a href="about.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">About</a>
+          <a href="contact.html" class="hover:text-blue-500 dark:text-white dark:hover:text-blue-400">Contact</a>
+          
+          <!-- MODIFIED: Added 'flex' class to the surrounding nav tag for alignment -->
+          <!-- START: This is your corrected Profile/Initials link block -->
+          <a id="auth-link" href="login.html" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold">
+            <!-- This container will hold the initials icon and is hidden by default -->
+            <div id="nav-initials-container" class="w-8 h-8 rounded-full hidden items-center justify-center text-white font-bold text-sm">
+                <!-- JS will add initials here -->
+            </div>
+            <!-- This text will show "Profile" or "Login" -->
+            <span id="nav-profile-text">Login</span>
+          </a>
+<!-- END: New Profile/Initials link block -->
+        </nav>
+        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+           <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414 0l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM3 11a1 1 0 100 2H2a1 1 0 100-2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+         </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-4">About MediStore</h2>
+          <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">Your Health, Our Priority.</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            MediStore is your trusted online medical partner, founded on the principle of making healthcare accessible and convenient for everyone. Our mission is to deliver top-quality medicines, healthcare products, and wellness essentials right to your doorstep, safely and efficiently.
+            <br><br>
+            By collaborating with certified pharmacies and a dedicated team of healthcare professionals, we ensure every product we deliver is authentic and reliable. We are committed to upholding the highest standards of customer care, privacy, and trust.
+          </p>
+        </div>
+        <div>
+          <img src="images/Team mate.avif" alt="MediStore Team" class="rounded-lg shadow-xl w-full">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-blue-50 dark:bg-gray-900">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3">🎯 Our Mission</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            To provide a seamless and secure online pharmacy experience, ensuring that essential healthcare is just a click away for every individual across India.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3">🔭 Our Vision</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            To be India's most trusted digital healthcare platform, recognized for our unwavering commitment to quality, affordability, and customer satisfaction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-10">Our Core Values</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6">
+                <div class="text-5xl mb-4">❤️</div>
+                <h3 class="text-xl font-semibold mb-2">Customer First</h3>
+                <p class="text-gray-600 dark:text-gray-400">Our customers are at the heart of everything we do. We strive to exceed expectations and build lasting relationships based on trust and care.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-5xl mb-4">🛡️</div>
+                <h3 class="text-xl font-semibold mb-2">Unwavering Quality</h3>
+                <p class="text-gray-600 dark:text-gray-400">We guarantee 100% authentic and certified products, sourced directly from reputable manufacturers and verified suppliers.</p>
+            </div>
+            <div class="p-6">
+                <div class="text-5xl mb-4">🌍</div>
+                <h3 class="text-xl font-semibold mb-2">Accessibility for All</h3>
+                <p class="text-gray-600 dark:text-gray-400">We are dedicated to making healthcare affordable and accessible to every corner of the nation, supported by our robust delivery network.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50 dark:bg-black">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-10">Meet Our Team</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all">
+          <img src="images/founder and co.jpeg" alt="Team Member 1" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-200 dark:border-blue-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Julian Becker</h3>
+          <p class="text-blue-600 dark:text-blue-400">Founder & CEO</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm">Julian leads MediStore with a passion for innovation in healthcare accessibility.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all">
+          <img src="images/Pharmacist.jpg" alt="Team Member 2" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-200 dark:border-blue-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100">Johansson</h3>
+          <p class="text-blue-600 dark:text-blue-400">Lead Pharmacist</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm">Johansson ensures that every product meets the highest standards of safety and efficacy.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all">
+          <img src="images/head of customer.jpeg" alt="Team Member 3" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-200 dark:border-blue-700">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100"> David Chen</h3>
+          <p class="text-blue-600 dark:text-blue-400">Head of Customer Support</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm">David Chen and his team are dedicated to providing you with prompt and helpful support 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <p>&copy; 2025 MediStore. All rights reserved.</p>
+      <div class="flex space-x-4 my-4 md:my-0">
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="#" class="hover:underline">Terms of Service</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </div>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 invert" alt="FB"></a>
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" class="w-6 invert" alt="IG"></a>
+        <a href="#" class="hover:opacity-75"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 invert" alt="TW"></a>
+      </div>
+    </div>
+  </footer>
+ 
+  <script src="./js/theme.js"></script>
+  <script type="module" src="js/auth-check.js"></script>
+
+</body>
+</html>

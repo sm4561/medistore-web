@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | MediStore</title>
+  
+  <!-- Main Tailwind CSS script -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Dark Mode Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center dark:bg-gray-800">
+    <h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">🩺 MediStore</h1>
+    <div class="flex items-center space-x-4">
+        <a href="cart.html" class="text-blue-600 hover:underline dark:text-blue-400">← Back to Cart</a>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+           <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414 0l.707-.707a1 1 0 111.414 1.414l-.707-.707a1 1 0 01-1.414 0zM3 11a1 1 0 100 2H2a1 1 0 100-2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 mt-6 bg-white dark:bg-gray-800 rounded shadow">
+    <h2 class="text-2xl font-semibold mb-4">Shipping & Payment</h2>
+
+    <form id="checkout-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Shipping Info -->
+      <div class="col-span-1 space-y-4">
+        <h3 class="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">Shipping Address</h3>
+        <input name="fullName" type="text" placeholder="Full Name" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input name="phone" type="text" placeholder="Phone Number" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input name="address1" type="text" placeholder="Address Line 1" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        <input name="address2" type="text" placeholder="Address Line 2" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+        <div class="flex gap-4">
+          <input name="city" type="text" placeholder="City" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+          <input name="pincode" type="text" placeholder="PIN Code" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required />
+        </div>
+        <select name="state" class="w-full border px-4 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+            <option value="">Select State</option>
+            <option value="AP">Andhra Pradesh</option>
+            <option value="AR">Arunachal Pradesh</option>
+            <option value="AS">Assam</option>
+            <option value="BR">Bihar</option>
+            <option value="CT">Chhattisgarh</option>
+            <option value="GA">Goa</option>
+            <option value="GJ">Gujarat</option>
+            <option value="HR">Haryana</option>
+            <option value="HP">Himachal Pradesh</option>
+            <option value="JH">Jharkhand</option>
+            <option value="KA">Karnataka</option>
+            <option value="KL">Kerala</option>
+            <option value="MP">Madhya Pradesh</option>
+            <option value="MH">Maharashtra</option>
+            <option value="MN">Manipur</option>
+            <option value="ML">Meghalaya</option>
+            <option value="MZ">Mizoram</option>
+            <option value="NL">Nagaland</option>
+            <option value="OD">Odisha</option>
+            <option value="PB">Punjab</option>
+            <option value="RJ">Rajasthan</option>
+            <option value="SK">Sikkim</option>
+            <option value="TN">Tamil Nadu</option>
+            <option value="TG">Telangana</option>
+            <option value="TR">Tripura</option>
+            <option value="UP">Uttar Pradesh</option>
+            <option value="UK">Uttarakhand</option>
+            <option value="WB">West Bengal</option>
+        </select>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-span-1 space-y-4">
+        <h3 class="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">Order Summary</h3>
+        <div id="summary-items-list" class="space-y-2 max-h-48 overflow-y-auto pr-2">
+            <!-- Items will be loaded here by JS -->
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded border dark:border-gray-600 space-y-2">
+          <p class="flex justify-between">Subtotal: <span class="font-medium" id="subtotal">₹0.00</span></p>
+          <p class="flex justify-between">Shipping Fee: <span class="font-medium" id="shipping">₹20.00</span></p>
+          <p class="flex justify-between text-lg font-bold">Total: <span id="total">₹20.00</span></p>
+        </div>
+
+        <!-- Proceed to Payment -->
+        <button type="submit" id="place-order-btn" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded">
+          Proceed to Payment
+        </button>
+      </div>
+    </form>
+  </main>
+  
+  <script type="module" src="js/checkout.js"></script>
+  <script src="./js/theme.js"></script>
+</body>
+</html>
+
