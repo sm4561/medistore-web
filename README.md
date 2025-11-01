@@ -30,7 +30,7 @@ It also includes an **admin dashboard** to manage products and view orders.
 ---
 
 ## 📂 Project Structure
-
+```
 ├── index.html
 ├── about.html
 ├── products.html
@@ -49,6 +49,8 @@ It also includes an **admin dashboard** to manage products and view orders.
 │ ├── checkout.js
 │ └── ...
 └── images/
+
+```
 
 
 ---
